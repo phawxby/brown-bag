@@ -9,8 +9,6 @@ export async function startServer(port: number): Promise<AddressInfo> {
       server = udp.createSocket("udp4");
 
       server.on("listening", () => {
-        //console.log("SERVER: listening", server?.address());
-
         if (server) {
           resolve(server.address());
         } else {
@@ -18,19 +16,13 @@ export async function startServer(port: number): Promise<AddressInfo> {
         }
       });
 
-      server.on("close", () => {
-        //console.log("SERVER: close");
-      });
+      server.on("close", () => {});
 
       server.on("error", (err) => {
-        //console.error("SERVER: error", err);
-
         reject(err);
       });
 
       server.on("message", (msg, info) => {
-        //console.log("SERVER: message", msg.toString("utf-8"));
-
         server?.send(`Hello ${msg.toString("utf-8")}`, info.port);
       });
 
@@ -42,13 +34,13 @@ export async function startServer(port: number): Promise<AddressInfo> {
 }
 
 export async function stopServer() {
-  return new Promise((resolve) => {
+  await new Promise((resolve) => {
     if (server) {
       server?.close(() => resolve(undefined));
     } else {
       resolve(undefined);
     }
-
-    server = undefined;
   });
+
+  server = undefined;
 }
