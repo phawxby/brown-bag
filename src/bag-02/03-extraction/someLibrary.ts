@@ -5,8 +5,12 @@ interface Options {
   port?: string;
 }
 
-interface Result {}
+interface Result {
+  bar: boolean;
+}
 
-export function init(options: Options): Result {
-  return {};
+export async function init(options: Options): Promise<Result> {
+  return {
+    bar: true,
+  };
 }
