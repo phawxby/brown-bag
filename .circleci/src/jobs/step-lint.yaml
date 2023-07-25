@@ -1,0 +1,8 @@
+docker:
+  - image: cimg/node:16.20.0
+resource_class: small
+
+steps:
+  - attach_workspace:
+      at: ./
+  - run: yarn run lint

@@ -1,0 +1,12 @@
+jobs:
+  - check-ci
+  - init
+  - step-lint:
+      requires:
+        - init
+  - step-test:
+      requires:
+        - init
+  - step-typecheck:
+      requires:
+        - init

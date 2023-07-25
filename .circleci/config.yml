@@ -25,7 +25,7 @@ jobs:
                     fi
                 name: Check for changes
                 shell: /bin/bash
-    test-lint:
+    init:
         docker:
             - image: cimg/node:16.20.0
         resource_class: small
@@ -33,15 +33,49 @@ jobs:
             - checkout
             - node/install-packages:
                 pkg-manager: yarn
+            - persist_to_workspace:
+                paths:
+                    - '*'
+                root: ./
+    step-lint:
+        docker:
+            - image: cimg/node:16.20.0
+        resource_class: small
+        steps:
+            - attach_workspace:
+                at: ./
             - run: yarn run lint
-            - run: yarn run typecheck
+    step-test:
+        docker:
+            - image: cimg/node:16.20.0
+        resource_class: small
+        steps:
+            - attach_workspace:
+                at: ./
             - run: yarn run test
+    step-typecheck:
+        docker:
+            - image: cimg/node:16.20.0
+        resource_class: small
+        steps:
+            - attach_workspace:
+                at: ./
+            - run: yarn run typecheck
 orbs:
     node: circleci/node@5.1.0
 version: 2.1
 workflows:
-    build-deploy:
+    test:
         jobs:
             - check-ci
-            - test-lint
+            - init
+            - step-lint:
+                requires:
+                    - init
+            - step-test:
+                requires:
+                    - init
+            - step-typecheck:
+                requires:
+                    - init
 
