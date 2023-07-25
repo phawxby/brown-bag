@@ -1,0 +1,45 @@
+jobs:
+    check-ci:
+        docker:
+            - image: cimg/node:16.20.0
+        resource_class: small
+        steps:
+            - checkout
+            - run:
+                command: |
+                    curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh | bash
+                name: Update circleci
+                shell: /bin/bash
+            - run:
+                command: |
+                    npm run circleci:pack
+                name: Pack
+            - run:
+                command: |
+                    if [ -n "$(git status --porcelain)" ]; then
+                        echo >&2 "Circleci config is not packed!"
+
+                        git diff
+
+                        exit 1
+                    fi
+                name: Check for changes
+                shell: /bin/bash
+    test-lint:
+        docker:
+            - image: cimg/node:16.20.0
+        resource_class: medium
+        steps:
+            - checkout
+            - node/install-packages:
+                pkg-manager: yarn
+            - run: yarn run test
+orbs:
+    node: circleci/node@5.1.0
+version: 2.1
+workflows:
+    build-deploy:
+        jobs:
+            - check-ci
+            - test-lint
+

@@ -1,0 +1,11 @@
+docker:
+  - image: cimg/node:16.20.0
+resource_class: small
+
+steps:
+  - checkout
+  - node/install-packages:
+      pkg-manager: yarn
+  - run: yarn run lint
+  - run: yarn run typecheck
+  - run: yarn run test

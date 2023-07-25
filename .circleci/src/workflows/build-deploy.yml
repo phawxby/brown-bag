@@ -1,0 +1,3 @@
+jobs:
+  - check-ci
+  - test-lint
