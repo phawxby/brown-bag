@@ -1,4 +1,4 @@
-interface FooType extends Object {
+interface FooType {
   bar: string;
   baz: boolean;
 }
@@ -9,11 +9,11 @@ const foo: FooType = {
 };
 
 function getProp<
-  TObj extends Object,
+  TObj extends object,
   TKey extends keyof TObj,
   TVal extends TObj[TKey]
 >(obj: TObj, prop: TKey): TVal {
   return obj[prop] as TVal;
 }
 
-const val = getProp(foo, "baz");
+export const val = getProp(foo, "baz");

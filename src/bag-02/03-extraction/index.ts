@@ -5,10 +5,12 @@ const options: Parameters<typeof init>[0] = {
   username: "dwdwwq",
 };
 
-async function doSomething() {
+export async function doSomething() {
   let result: Awaited<ReturnType<typeof init>>;
 
+  // eslint-disable-next-line no-constant-condition
   if (true) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     result = await init(options);
   }
 }

@@ -1,4 +1,4 @@
-import { test, expect, beforeAll, vi, afterAll } from "vitest";
+import { test, expect, beforeAll, afterAll } from "vitest";
 import { startServer, stopServer } from ".";
 import { AddressInfo } from "net";
 import getPort from "get-port";
@@ -37,7 +37,7 @@ test("should respond", async () => {
         Buffer.from("Paul"),
         address.port,
         address.address,
-        (err, bytes) => {
+        (err) => {
           if (err) {
             reject(err);
           }

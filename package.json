@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "vitest",
+    "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -8,11 +9,17 @@
     "@testing-library/react": "^14.0.0",
     "@types/ioredis-mock": "^8.2.1",
     "@types/pg": "^8.6.6",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vitest": "^0.2.6",
     "get-port": "^6.1.2",
     "ioredis-mock": "^8.6.0",
     "jsdom": "^21.1.1",
     "msw": "^1.2.1",
-    "prettier": "^2.8.7",
+    "prettier": "^3.0.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.0.4",
     "vitest": "^0.30.1"

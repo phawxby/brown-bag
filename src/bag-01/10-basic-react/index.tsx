@@ -2,7 +2,9 @@ import React from "react";
 
 export interface WelcomeProps {
   name: string;
-  onClick?: () => {};
+  onClick?: () => {
+    // Do something
+  };
 }
 
 export class Welcome extends React.Component<WelcomeProps> {

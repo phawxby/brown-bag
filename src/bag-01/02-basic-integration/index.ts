@@ -10,7 +10,8 @@ export function encrypt(toEncrypt: string): string {
     Buffer.from(encryption_key),
     Buffer.from(initialization_vector)
   );
-  var crypted = cipher.update(toEncrypt, "utf8", "hex");
+  
+  let crypted = cipher.update(toEncrypt, "utf8", "hex");
   crypted += cipher.final("hex");
   return crypted;
 }
