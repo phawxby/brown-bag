@@ -2,7 +2,8 @@
   "scripts": {
     "test": "vitest",
     "lint": "eslint src --ext .ts,.tsx",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "circleci:pack": "circleci config pack ./.circleci/src > ./.circleci/config.yml ./*.json ./*.md"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
