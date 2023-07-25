@@ -3,7 +3,7 @@
     "test": "vitest",
     "lint": "eslint src --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
-    "circleci:pack": "circleci config pack ./.circleci/src > ./.circleci/config.yml ./*.json ./*.md"
+    "circleci:pack": "circleci config pack ./.circleci/src > ./.circleci/config.yml"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
