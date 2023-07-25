@@ -6,9 +6,7 @@ const options = {
   semi: true,
   trailingComma: 'none',
   bracketSpacing: true,
-  arrowParens: 'always',
-  importOrder: ['^[./]'],
-  importOrderSeparation: true
+  arrowParens: 'always'
 };
 
 module.exports = options;
