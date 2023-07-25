@@ -5,6 +5,10 @@ test('simple test', () => {
   expect(doSomething('foo')).toEqual('---foo---');
 });
 
-test('flakey test', () => {
+test('broken test', () => {
+  expect('foo').toEqual('foo');
+});
+
+test('flaky test', () => {
   expect(Math.random()).toBeLessThan(0.75);
 });

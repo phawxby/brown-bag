@@ -5,4 +5,6 @@ resource_class: small
 steps:
   - attach_workspace:
       at: ./
-  - run: yarn run test
+  - run: yarn run test -- run --coverage.enabled --coverage.reporter=text --reporter=basic --reporter=junit --outputFile=./reports/junit.xml
+  - store_test_results:
+      path: ./reports/junit.xml
