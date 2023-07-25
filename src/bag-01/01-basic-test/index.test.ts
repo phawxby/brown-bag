@@ -9,6 +9,10 @@ test('broken test', () => {
   expect('foo').toEqual('foo');
 });
 
-test('flaky test', () => {
-  expect(Math.random()).toBeLessThan(0.75);
-});
+test(
+  'flaky test',
+  () => {
+    expect(Math.random()).toBeLessThan(0.5);
+  },
+  { retry: 0 }
+);
