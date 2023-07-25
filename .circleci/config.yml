@@ -28,11 +28,13 @@ jobs:
     test-lint:
         docker:
             - image: cimg/node:16.20.0
-        resource_class: medium
+        resource_class: small
         steps:
             - checkout
             - node/install-packages:
                 pkg-manager: yarn
+            - run: yarn run lint
+            - run: yarn run typecheck
             - run: yarn run test
 orbs:
     node: circleci/node@5.1.0
