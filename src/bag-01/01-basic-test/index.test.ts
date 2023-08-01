@@ -6,7 +6,7 @@ test('simple test', () => {
 });
 
 test('broken test', () => {
-  expect('foo').toEqual('foo');
+  expect('foo').toEqual('bar');
 });
 
 test(
